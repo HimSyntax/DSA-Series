@@ -13,7 +13,5 @@ This challenge consists of **selected DSA questions** aimed at improving:
 
 # 📌 Challenge Overview
 
-- 🎯 Total Questions: **75**
 - 💻 Language: **Java**
-- 🔥 Daily Goal: **2 Questions**
 - 📚 Focus: DSA Concepts + Coding Practice
