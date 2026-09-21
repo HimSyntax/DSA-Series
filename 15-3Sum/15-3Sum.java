@@ -1,55 +1,25 @@
-// Last updated: 21/05/2026, 23:26:26
-1import java.util.*;
-2
-3class Solution {
-4    public List<List<Integer>> threeSum(int[] nums) {
+// Last updated: 21/09/2026, 07:28:36
+1class Solution {
+2    public List<List<Integer>> threeSum(int[] nums) {
+3        
+4        int n = nums.length;
 5
-6        List<List<Integer>> res = new ArrayList<>();
-7
-8        Arrays.sort(nums);
-9
-10        for (int i = 0; i < nums.length - 2; i++) {
-11
-12            if (i > 0 && nums[i] == nums[i - 1]) {
-13                continue;
-14            }
-15
-16            int left = i + 1;
-17            int right = nums.length - 1;
-18
-19            while (left < right) {
-20
-21                int sum = nums[i] + nums[left] + nums[right];
-22
-23                if (sum == 0) {
-24
-25                    res.add(Arrays.asList(
-26                            nums[i],
-27                            nums[left],
-28                            nums[right]
-29                    ));
-30
-31                    while (left < right &&
-32                           nums[left] == nums[left + 1]) {
-33                        left++;
-34                    }
-35
-36                    while (left < right &&
-37                           nums[right] == nums[right - 1]) {
-38                        right--;
-39                    }
-40
-41                    left++;
-42                    right--;
-43
-44                } else if (sum < 0) {
-45                    left++;
-46                } else {
-47                    right--;
-48                }
-49            }
-50        }
-51
-52        return res;
-53    }
-54}
+6        Set<List<Integer>>ans = new HashSet<>();
+7        
+8        for(int i=0; i<n; i++){
+9            HashSet<Integer>set = new HashSet<>();
+10            for(int j=i+1; j<n; j++){
+11                int third = -(nums[i]+nums[j]);
+12
+13
+14                if(set.contains(third)){
+15                    List<Integer>temp = Arrays.asList(nums[i],nums[j],third);
+16                    Collections.sort(temp);
+17                    ans.add(temp);
+18                }
+19                set.add(nums[j]);
+20            }
+21        }
+22        return new ArrayList<>(ans);
+23    }
+24}
